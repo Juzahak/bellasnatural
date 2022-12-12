@@ -30,7 +30,7 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
- 
+
 export default function Home() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const [quantityInput, setQuantity] = useState(1);
@@ -42,19 +42,20 @@ export default function Home() {
 
     const router = useRouter();
     const { id } = router.query;
-  
+
     useEffect(() => {
 
 
 
         products?.forEach((item, index) => {
-            if(item?.id === parseInt(id)){
+            if (item?.id === parseInt(id)) {
                 JSON.parse(item.price)?.forEach((item2, index) => {
-                    if(index < 1){
+                    if (index < 1) {
                         setValue(parseInt(item2?.price))
                         sizes?.map(item3 => {
-                            if(item3?.id === parseInt(item2?.size)){
-                            setSizeName(item3?.name)}
+                            if (item3?.id === parseInt(item2?.size)) {
+                                setSizeName(item3?.name)
+                            }
                         })
                     }
                 })
@@ -64,13 +65,13 @@ export default function Home() {
 
     const inputQtd = (e) => {
         let valorAtual = quantityInput;
-        if(e === 'mais'){
+        if (e === 'mais') {
             setQuantity(valorAtual + 1);
         }
-        if(valorAtual < 1){
+        if (valorAtual < 1) {
             setQuantity(valorAtual = 1);
         }
-        if (e === 'menos' && valorAtual >= 2){
+        if (e === 'menos' && valorAtual >= 2) {
             setQuantity(valorAtual - 1);
         }
     }
@@ -91,7 +92,7 @@ export default function Home() {
             if (prodArr == item.id) {
                 alert('Produto ja adicionado')
 
-            } else if(item.id === parseInt(id)){
+            } else if (item.id === parseInt(id)) {
                 var entry = {
                     id: item.id,
                     titulo: item.name,
@@ -113,7 +114,9 @@ export default function Home() {
                     toast('Produto adicionado com sucesso!', {
                         position: "top-right",
                     }))
-            }})}
+            }
+        })
+    }
 
 
     console.log(value, sizeName)
@@ -186,80 +189,81 @@ export default function Home() {
                                                     <div className="single-pro-desc col-12 col-md-7">
                                                         <div className="single-pro-content h-100 d-flex flex-column justify-content-between">
                                                             <div>
-                                                            <div className="ec-single-desc pt-4 pb-4" style={{whiteSpace: 'pre-wrap'}}>
-                                                                {item.short_description}
-                                                            </div>
+                                                                <div className="ec-single-desc pt-4 pb-4" style={{ whiteSpace: 'pre-wrap' }}>
+                                                                    {item.short_description}
+                                                                </div>
                                                             </div>
 
                                                             <div>
-                                                            {JSON.parse(item.price).map((item, index) => {
-                                                                if(index < 1){
-                                                                return (
-                                                                    <>
-                                                                        <div className="ec-single-price-stoke">
-                                                                            <div className="ec-single-price">
-                                                                                <span className="ec-single-ps-title">
-                                                                                    Valor
-                                                                                </span>
-                                                                                <span className="new-price">
-                                                                                    R${(value * quantityInput).toFixed(2)}
-                                                                                </span>
-                                                                            </div>
-                                                                            <div className="ec-single-stoke">
-                                                                                <span className="ec-single-ps-title">
-                                                                                    Peças em Estoque:
-                                                                                </span>
-                                                                                <span className="ec-single-sku">
-                                                                                    {item.quantity}
-                                                                                </span>
-                                                                            </div>
+                                                                {JSON.parse(item.price).map((item, index) => {
+                                                                    if (index < 1) {
+                                                                        return (
+                                                                            <>
+                                                                                <div className="ec-single-price-stoke">
+                                                                                    <div className="ec-single-price">
+                                                                                        <span className="ec-single-ps-title">
+                                                                                            Valor
+                                                                                        </span>
+                                                                                        <span className="new-price">
+                                                                                            R${(value * quantityInput).toFixed(2)}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                    <div className="ec-single-stoke">
+                                                                                        <span className="ec-single-ps-title">
+                                                                                            Peças em Estoque:
+                                                                                        </span>
+                                                                                        <span className="ec-single-sku">
+                                                                                            {item.quantity}
+                                                                                        </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </>
+                                                                        );
+                                                                    }
+                                                                })}
+
+                                                                <div className="ec-pro-variation">
+                                                                    <div className="ec-pro-variation-inner ec-pro-variation-size">
+                                                                        <span>Tamanhos disponíveis</span>
+                                                                        <div className="ec-pro-variation-content">
+                                                                            <ul className="ec-cat-tab-nav nav d-flex flex-row">
+                                                                                {sizes?.map((itemSize) => {
+                                                                                    return (<>
+                                                                                        {JSON.parse(item.price).map((item) => {
+                                                                                            if (itemSize.id === parseInt(item.size)) {
+                                                                                                console.log(item)
+                                                                                                return (
+                                                                                                    <>
+                                                                                                        <li onClick={() => {
+                                                                                                            setValue(parseInt(item.price));
+                                                                                                            setSizeName(itemSize.name);
+                                                                                                        }}>
+                                                                                                            <a data-bs-toggle="tab" className="cat-link selected"
+                                                                                                                href="#tab-cat-1">
+                                                                                                                <span >{itemSize.name}</span>
+
+                                                                                                            </a>
+                                                                                                        </li>
+                                                                                                    </>
+                                                                                                )
+                                                                                            }
+                                                                                        })}
+                                                                                    </>)
+                                                                                })}
+                                                                            </ul>
                                                                         </div>
-                                                                    </>
-                                                                );}
-                                                            })}
-
-                                                            <div className="ec-pro-variation">
-                                                                <div className="ec-pro-variation-inner ec-pro-variation-size">
-                                                                    <span>Tamanhos disponíveis</span>
-                                                                    <div className="ec-pro-variation-content">
-                                                                        <ul className="ec-cat-tab-nav nav d-flex flex-row">
-                                                                        {sizes?.map((itemSize) => {
-                                                                            return(<>
-                                                                            {JSON.parse(item.price).map((item) => {
-                                                                                if(itemSize.id === parseInt(item.size)){
-                                                                                    console.log(item)
-                                                                                    return(
-                                                                                    <>
-                                                                                        <li onClick={() => {
-                                                                                            setValue(parseInt(item.price));
-                                                                                            setSizeName(itemSize.name);
-                                                                                        }}>
-                                                                                            <a data-bs-toggle="tab" className="cat-link selected"
-                                                                                            href="#tab-cat-1">
-                                                                                            <span >{itemSize.name}</span>
-
-                                                                                            </a>
-                                                                                        </li>
-                                                                                    </>
-                                                                                    )
-                                                                                }
-                                                                            })}
-                                                                            </>)
-                                                                        })}
-                                                                        </ul>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="ec-single-qty">
-                                                                <div class="qty-plus-minus">
-                                                                <div class="dec ec_qtybtn" onClick={() => inputQtd('menos')}>-</div>
-                                                                <input class="qty-input" disable type="text" value={quantityInput} />
-                                                                    <div class="inc ec_qtybtn" onClick={() => inputQtd('mais')}>+</div>
+                                                                <div class="ec-single-qty">
+                                                                    <div class="qty-plus-minus">
+                                                                        <div class="dec ec_qtybtn" onClick={() => inputQtd('menos')}>-</div>
+                                                                        <input class="qty-input" disable type="text" value={quantityInput} />
+                                                                        <div class="inc ec_qtybtn" onClick={() => inputQtd('mais')}>+</div>
+                                                                    </div>
+                                                                    <div class="ec-single-cart ">
+                                                                        <button class="btn btn-primary" onClick={addProduct}>Adicionar ao carrinho</button>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="ec-single-cart ">
-                                                                    <button class="btn btn-primary" onClick={addProduct}>Adicionar ao carrinho</button>
-                                                                </div>
-                                                            </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -290,7 +294,7 @@ export default function Home() {
                                                     id="home"
                                                     role="tabpanel"
                                                     aria-labelledby="home-tab"
-                                                    style={{whiteSpace: 'pre-wrap'}}
+                                                    style={{ whiteSpace: 'pre-wrap' }}
                                                 >
                                                     {item.full_description}
                                                 </div>
@@ -300,7 +304,7 @@ export default function Home() {
                                 </div>
                             </div>
                         </section>
-                        <ProdDestaques products={products} mainCategories={mainCategories}/>
+                        <ProdDestaques products={products} mainCategories={mainCategories} />
                     </>
                 ) : (
                     <></>

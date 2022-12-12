@@ -406,3 +406,57 @@
   text-align: center;
   padding: 0 15px;
 }
+
+.qty-plus-minus {
+  border: 1px solid #eeeeee;
+  display: inline-block;
+  height: 40px;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.dec.ec_qtybtn {
+  border-right: 1px solid #eeeeee;
+}
+.ec_qtybtn {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+  font-size: 22px;
+  color: #777777;
+}
+
+input.qty-input {
+  background: transparent none repeat scroll 0 0;
+  border: medium none;
+  color: #444444;
+  float: left;
+  font-size: 15px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 40px;
+  outline: none;
+  font-weight: 700;
+}
+
+.ec_qtybtn {
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+  font-size: 22px;
+  color: #777777;
+}
