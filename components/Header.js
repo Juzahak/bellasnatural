@@ -128,7 +128,11 @@ function Header() {
                     <div className="header-icon">
                       <FaShoppingCart className="svg_img header_svg" />
                     </div>
+
                     <span className="ec-header-count ec-cart-count">{tamanho}</span>
+
+                    <span className="ec-header-count ec-cart-count">{0 || cartProd.length}</span>
+
                   </a>
                   <a
                     href="#ec-mobile-menu"
@@ -196,7 +200,11 @@ function Header() {
                     <a onClick={toggleCart} className="ec-header-btn ec-side-toggle">
                       <div className="header-icon">
                         <FaShoppingCart className="svg_img header_svg" />
+
                         <span className="ec-header-count ec-cart-count">{tamanho}</span>
+
+                        <span className="ec-header-count ec-cart-count">{0 || cartProd.length}</span>
+
                       </div>
                       <span className="ec-btn-title">Carrinho</span>
                     </a>
