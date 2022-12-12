@@ -153,7 +153,6 @@ export default function Home() {
             <div className='d-flex flex-column'>
               <div className='col-12 d-flex pb-4 mob-column' >
                 {products?.map((item, index) => {
-                  console.log(item)
                     if(index <= 4){
                     let valores = JSON.parse(item.price);
                     let mainName = '';
@@ -286,7 +285,7 @@ export default function Home() {
         <div style={{ width: '100%', height: '500px' }}>
         <Image src={require("../assets/img/banner/banner01.jpg")} alt="" className='imageBanner'/>
         </div>
-        <div className="ec-offer-inner">
+        <div className="ec-offer-inner" style={{position: 'absolute'}}>
           <div className="row justify-content-center">
             <div className="w-100 col-lg-12 col-md-7 col-sm-7 align-self-center ec-offer-content">
               <h2 className="ec-offer-title pb-5" style={{ color: '#fff' }}>Feito com Cuidado</h2>

@@ -2,10 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/api/product_sizes": "pages/api/product_sizes.js",
-  "/product": "pages/product.js",
   "/api/category": "pages/api/category.js",
   "/api/products": "pages/api/products.js",
-  "/AllProducts": "pages/AllProducts.js",
-  "/api/subcategory": "pages/api/subcategory.js"
+  "/": "pages/index.js"
 }

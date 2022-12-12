@@ -27,7 +27,6 @@ function ProdDestaques({products, mainCategories}) {
         </div>
         <div className='col-12 d-flex pb-4 mob-column container' >
                 {products?.map((item, index) => {
-                  console.log(item)
                     if(index <= 4){
                     let valores = JSON.parse(item.price);
                     let mainName = '';

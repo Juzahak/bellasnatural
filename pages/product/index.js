@@ -30,11 +30,12 @@ import "swiper/css/thumbs";
 import { FreeMode, Navigation, Thumbs } from "swiper";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
-
-
+ 
 export default function Home() {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    const [quantityInput, setQuantity] = useState(0);
+    const [quantityInput, setQuantity] = useState(1);
+    const [value, setValue] = useState(0);
+    const [sizeName, setSizeName] = useState('');
     const { data: products } = useSwr(`api/products`, fetcher);
     const { data: sizes } = useSwr(`api/product_sizes`, fetcher);
     const { data: mainCategories } = useSwr(`api/category`, fetcher);
@@ -48,14 +49,52 @@ export default function Home() {
         if(e === 'mais'){
             setQuantity(valorAtual + 1);
         }
-        if(valorAtual < 0){
-            setQuantity(valorAtual = 0);
+        if(valorAtual < 1){
+            setQuantity(valorAtual = 1);
         }
-        if (e === 'menos' && valorAtual >= 1){
+        if (e === 'menos' && valorAtual >= 2){
             setQuantity(valorAtual - 1);
         }
     }
-    console.log(quantityInput)
+
+    const addProduct = () => {
+        var product = JSON.parse(localStorage.getItem('produtos'));
+        if (product == null) product = [];
+        var prodArr = [];
+
+        product.forEach(producto => {
+
+            if (producto.id == parseInt(id)) {
+                prodArr = producto.id;
+            }
+        })
+
+        products.forEach((item, index) => {
+            if (prodArr == item.id) {
+                alert('Produto ja adicionado')
+
+            } else if(item.id === parseInt(id)){
+                var entry = {
+                    id: item.id,
+                    titulo: item.name,
+                    embalagem: sizeName,
+                    valor: value,
+                    imagem: item.image,
+                    peso: item.peso,
+                    largura: item.largura,
+                    altura: item.altura,
+                    comprimento: item.comprimento,
+                    quantidadeCompra: quantityInput,
+                    total: value * quantityInput
+                }
+                localStorage.setItem('entry', JSON.stringify(entry));
+                product.push(entry);
+                localStorage.setItem("produtos", JSON.stringify(product));
+                return
+            }})}
+
+
+    console.log(value)
     return (
         <>
             <Header />
@@ -141,7 +180,7 @@ export default function Home() {
                                                                                     Valor
                                                                                 </span>
                                                                                 <span className="new-price">
-                                                                                    R${(item.price * 1).toFixed(2)}
+                                                                                    R${(value * quantityInput).toFixed(2)}
                                                                                 </span>
                                                                             </div>
                                                                             <div className="ec-single-stoke">
@@ -166,10 +205,15 @@ export default function Home() {
                                                                             return(<>
                                                                             {JSON.parse(item.price).map((item) => {
                                                                                 if(itemSize.id === parseInt(item.size)){
+                                                                                    console.log(item)
                                                                                     return(
                                                                                     <>
-                                                                                        <li>
-                                                                                            <span>{itemSize.name}</span>
+                                                                                        <li onClick={() => {
+                                                                                            setValue(parseInt(item.price));
+                                                                                            setSizeName(itemSize.name);
+
+                                                                                        }}>
+                                                                                            <span >{itemSize.name}</span>
                                                                                         </li>
                                                                                     </>
                                                                                     )
@@ -184,11 +228,11 @@ export default function Home() {
                                                             <div class="ec-single-qty">
                                                                 <div class="qty-plus-minus">
                                                                 <div class="dec ec_qtybtn" onClick={() => inputQtd('menos')}>-</div>
-                                                                <input class="qty-input" type="text" value={quantityInput} />
+                                                                <input class="qty-input" disable type="text" value={quantityInput} />
                                                                     <div class="inc ec_qtybtn" onClick={() => inputQtd('mais')}>+</div>
                                                                 </div>
                                                                 <div class="ec-single-cart ">
-                                                                    <button class="btn btn-primary">Adicionar ao carrinho</button>
+                                                                    <button class="btn btn-primary" onClick={addProduct}>Adicionar ao carrinho</button>
                                                                 </div>
                                                             </div>
                                                             </div>

@@ -1,7 +1,7 @@
 import { FaUserAlt, FaShoppingCart, FaSearch, FaAngleDown } from "react-icons/fa";
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
  
 import useSwr, { mutate } from "swr";
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -9,6 +9,15 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 function Header() {
   const { data: mainCategories } = useSwr(`/api/category`, fetcher);
+
+  let quantidade = 0;
+
+  if (typeof window !== 'undefined') {
+    // Perform localStorage action
+    var product = JSON.parse(localStorage.getItem('produtos'));
+    let somar = product.map(item => {quantidade = quantidade + 1});
+  }
+
     const cartContainer = useRef();
 
     const toggleCart = () => {
@@ -23,6 +32,8 @@ function Header() {
       cartContainer.current.classList.remove("ec-open")
     }   
     
+
+    console.log(quantidade)
 
 /*--------------------- ecart Responsive Menu -----------------------------------*/
 // function ResponsiveMobileEcartMenu() {
@@ -100,7 +111,7 @@ function Header() {
                   <div className="header-icon">
                     <FaShoppingCart className="svg_img header_svg"/>
                   </div>
-                  <span className="ec-header-count ec-cart-count">0</span>
+                  <span className="ec-header-count ec-cart-count">{quantidade}</span>
                 </a>
                 <a
                   href="#ec-mobile-menu"
@@ -168,7 +179,7 @@ function Header() {
                   <a onClick={toggleCart} className="ec-header-btn ec-side-toggle">
                     <div className="header-icon">
                       <FaShoppingCart className="svg_img header_svg"/>
-                      <span className="ec-header-count ec-cart-count">0</span>
+                      <span className="ec-header-count ec-cart-count">{quantidade}</span>
                     </div>
                     <span className="ec-btn-title">Carrinho</span>
                   </a>
