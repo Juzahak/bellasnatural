@@ -382,14 +382,14 @@ function Header() {
             </div>
             <ul className="eccart-pro-items">
 
-              {cartProd?.map(item => {
+              {cartProd?.map((item, index) => {
                 return (
-                  <li>
+                  <li key={index}>
                     <a href="product-left-sidebar.html" class="sidecart_pro_img">
                       {JSON.parse(item.imagem)?.map((item2, index) => {
                         if (index < 1) {
                           return (
-                            <Image src={item2.url}
+                            <Image key={index} src={item2.url}
                               width={250} height={250}></Image>
                           )
                         }
