@@ -128,7 +128,7 @@ function Header() {
                     <div className="header-icon">
                       <FaShoppingCart className="svg_img header_svg" />
                     </div>
-                    <span className="ec-header-count ec-cart-count">{cartProd.length}</span>
+                    <span className="ec-header-count ec-cart-count">{cartProd.length || "*"}</span>
                   </a>
                   <a
                     href="#ec-mobile-menu"
@@ -196,7 +196,7 @@ function Header() {
                     <a onClick={toggleCart} className="ec-header-btn ec-side-toggle">
                       <div className="header-icon">
                         <FaShoppingCart className="svg_img header_svg" />
-                        <span className="ec-header-count ec-cart-count">{cartProd.length}</span>
+                        <span className="ec-header-count ec-cart-count">{cartProd.length || 0}</span>
                       </div>
                       <span className="ec-btn-title">Carrinho</span>
                     </a>
@@ -413,7 +413,7 @@ function Header() {
                     <td className="text-right">
                     R${cartProd?.map((item2, index) => {
                       subTotal = item2.valor * item2.quantidadeCompra + subTotal
-                      if(index + 1 === cartProd.length){return(subTotal)}
+                      if(index + 1 === cartProd.length || 0){return(subTotal)}
                     })}.00
                     </td>
                   </tr>
@@ -422,7 +422,7 @@ function Header() {
                     <td className="text-right primary-color">
                     R${cartProd?.map((item2, index) => {
                       Total = item2.valor * item2.quantidadeCompra + Total
-                      if(index + 1 === cartProd.length){return(Total)}
+                      if(index + 1 === cartProd.length || 0){return(Total)}
                     })}.00
                     </td>
                   </tr>
