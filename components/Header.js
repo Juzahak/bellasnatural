@@ -131,7 +131,7 @@ function Header() {
 
                     <span className="ec-header-count ec-cart-count">{tamanho}</span>
 
-                    <span className="ec-header-count ec-cart-count">{0 || cartProd.length}</span>
+                    <span className="ec-header-count ec-cart-count">{tamanho}</span>
 
                   </a>
                   <a
@@ -203,7 +203,7 @@ function Header() {
 
                         <span className="ec-header-count ec-cart-count">{tamanho}</span>
 
-                        <span className="ec-header-count ec-cart-count">{0 || cartProd.length}</span>
+                        <span className="ec-header-count ec-cart-count">{tamanho}</span>
 
                       </div>
                       <span className="ec-btn-title">Carrinho</span>
