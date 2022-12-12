@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from 'next/link';
 import { FaShoppingBag } from "react-icons/fa";
 
 export default function ProductList({ categorySelected, subCategorySelected, products, initialid }) {
@@ -18,7 +18,10 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
             <div key={item.id} className="col-lg-4 col-md-6 col-sm-6 pb-5 pl-0">
               <div className="ec-product-cbb">
                 <div className="ec-product-image">
-                  <a href="#" className="image">
+                  <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }} className="image">
                     <Image
                       className="pic-1"
                       src={imagem}
@@ -33,12 +36,15 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
                       width={150}
                     height={150}
                     />
-                  </a>
+                  </Link>
                   <ul className="ec-product-links">
                     <li>
-                      <a href="#" data-tip="Add To Cart">
+                      <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }} data-tip="Add To Cart">
                         <FaShoppingBag size={20} />
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -46,18 +52,21 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
                 <div className="ec-product-body">
 
                   <h3 className="ec-title">
-                    <a href="#">{item.name}</a>
+                    <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }}>{item.name}</Link>
                   </h3>
                   <div className="ec-price">
                   R${valores[0].price}.00
                   </div>
                   {/* <div className="ec-size">
-                    <a href="#">S</a>
-                    <a href="#">M</a>
-                    <a href="#">L</a>
+                    <Link href="#">S</Link>
+                    <Link href="#">M</Link>
+                    <Link href="#">L</Link>
                   </div> */}
                   <div className='col-12 pt-3'>
-                    <span className="ec-offer-btn"><a className="btn btn-lg btn-primary w-100 itemBtn d-flex">Compre Já</a></span>
+                    <span className="ec-offer-btn"><Link href={{ pathname: "/product", query: {id: `${item.id}`},}} className="btn btn-lg btn-primary w-100 itemBtn d-flex">Compre Já</Link></span>
                   </div>
                 </div>
               </div>
@@ -72,7 +81,10 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
             <div key={item.id} className="col-lg-4 col-md-6 col-sm-6 pb-5 pl-0">
               <div className="ec-product-cbb">
                 <div className="ec-product-image">
-                  <a href="#" className="image">
+                  <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }} className="image">
                     <Image
                       className="pic-1"
                       src={imagem}
@@ -87,29 +99,35 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
                       width={150}
                     height={150}
                     />
-                  </a>
+                  </Link>
                   <ul className="ec-product-links">
                     <li>
-                      <a href="#" data-tip="Add To Cart">
+                      <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }} data-tip="Add To Cart">
                         <FaShoppingBag size={20} />
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
                 <div className="ec-product-body">
                   <h3 className="ec-title">
-                    <a href="#">{item.name}</a>
+                    <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }}>{item.name}</Link>
                   </h3>
                   <div className="ec-price">
                   R${valores[0].price}.00
                   </div>
                   {/* <div className="ec-size">
-                    <a href="#">S</a>
-                    <a href="#">M</a>
-                    <a href="#">L</a>
+                    <Link href="#">S</Link>
+                    <Link href="#">M</Link>
+                    <Link href="#">L</Link>
                   </div> */}
                   <div className='col-12 pt-3'>
-                    <span className="ec-offer-btn"><a className="btn btn-lg btn-primary w-100 itemBtn d-flex">Compre Já</a></span>
+                    <span className="ec-offer-btn"><Link href={{ pathname: "/product", query: {id: `${item.id}`},}} className="btn btn-lg btn-primary w-100 itemBtn d-flex">Compre Já</Link></span>
                   </div>
                 </div>
               </div>
@@ -124,7 +142,10 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
             <div key={item.id} className="col-lg-4 col-md-6 col-sm-6 pb-5 pl-0">
               <div className="ec-product-cbb">
                 <div className="ec-product-image">
-                  <a href="#" className="image">
+                  <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }} className="image">
                     <Image
                       className="pic-1"
                       src={imagem}
@@ -139,12 +160,15 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
                       width={150}
                     height={150}
                     />
-                  </a>
+                  </Link>
                   <ul className="ec-product-links">
                     <li>
-                      <a href="#" data-tip="Add To Cart">
+                      <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }} data-tip="Add To Cart">
                         <FaShoppingBag size={20} />
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -152,18 +176,21 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
                 <div className="ec-product-body">
 
                   <h3 className="ec-title">
-                    <a href="#" style={{color: '#A9713D'}}>{item.name}</a>
+                    <Link href={{
+                    pathname: "/product",
+                    query: {id: `${item.id}`},
+                  }} style={{color: '#A9713D'}}>{item.name}</Link>
                   </h3>
                   <div className="ec-price">
                     R${valores[0].price}.00
                   </div>
                   {/* <div className="ec-size">
-                    <a href="#">S</a>
-                    <a href="#">M</a>
-                    <a href="#">L</a>
+                    <Link href="#">S</Link>
+                    <Link href="#">M</Link>
+                    <Link href="#">L</Link>
                   </div> */}
                   <div className='col-12 pt-3'>
-                    <span className="ec-offer-btn"><a className="btn btn-lg btn-primary w-100 itemBtn d-flex">Compre Já</a></span>
+                    <span className="ec-offer-btn"><Link href={{ pathname: "/product", query: {id: `${item.id}`},}} className="btn btn-lg btn-primary w-100 itemBtn d-flex">Compre Já</Link></span>
                   </div>
                 </div>
               </div>
@@ -177,7 +204,7 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
           <div className="col-lg-4 col-md-6 col-sm-6 pb-5 pl-0">
             <div key={item.id} className="ec-product-cbb">
               <div className="ec-product-image">
-                <a href="#" className="image">
+                <Link href="#" className="image">
                   <Imag
                     className="pic-1"
                     src={require("../../assets/images/product-image/6_1.jpg")}
@@ -192,12 +219,12 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
                     width={150}
                     height={150}
                   />
-                </a>
+                </Link>
                 <ul className="ec-product-links">
                   <li>
-                    <a href="#" data-tip="Add To Cart">
+                    <Link href="#" data-tip="Add To Cart">
                       <FaShoppingBag size={20} />
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -212,29 +239,29 @@ export default function ProductList({ categorySelected, subCategorySelected, pro
                 </ul>
 
                 <h3 className="ec-title">
-                  <a href="#">{item.name}</a>
+                  <Link href="#">{item.name}</Link>
                 </h3>
                 <div className="ec-price">
                   <span>$46.00</span> $29.00
                 </div>
                 <div className="ec-color">
-                  <a href="#">
+                  <Link href="#">
                     <span className="red"></span>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link href="#">
                     <span className="blue"></span>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link href="#">
                     <span className="pink"></span>
-                  </a>
-                  <a href="#">
+                  </Link>
+                  <Link href="#">
                     <span className="green"></span>
-                  </a>
+                  </Link>
                 </div>
                 <div className="ec-size">
-                  <a href="#">S</a>
-                  <a href="#">M</a>
-                  <a href="#">L</a>
+                  <Link href="#">S</Link>
+                  <Link href="#">M</Link>
+                  <Link href="#">L</Link>
                 </div>
               </div>
             </div>

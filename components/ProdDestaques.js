@@ -1,4 +1,6 @@
 import Image from 'next/image'
+
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css';
@@ -38,7 +40,7 @@ function ProdDestaques({products, mainCategories}) {
                         <div className="ec-product-inner">
                           <div className="ec-pro-image-outer">
                             <div className="ec-pro-image">
-                              <a href="/bellasnatural" className="image">
+                              <Link href={{ pathname: "/product", query: {id: `${item.id}`},}} className="image">
                                 <Image
                                   className="main-image"
                                   src={imagem}
@@ -53,23 +55,23 @@ function ProdDestaques({products, mainCategories}) {
                                   width={260}
                                   height={260}
                                 />
-                              </a>
+                              </Link>
                               <button title="Adicionar ao Carrinho" className="add-to-cart">
                                 <FaCartPlus className="svg_img pro_svg" />
                                 Adicionar ao Carrinho
                               </button>
 
                               <div className="ec-pro-actions">
-                                <a
-                                  href="/bellasnatural"
+                                <Link
+                                  href={{ pathname: "/product", query: {id: `${item.id}`},}}
                                   className="ec-btn-group quickview">
-                                  <FaRegEye className="svg_img pro_svg" /></a>
+                                  <FaRegEye className="svg_img pro_svg" /></Link>
                               </div>
                             </div>
                           </div>
                           <div className="ec-pro-content">
                             <h5 className="ec-pro-title">
-                              <a href="/bellasnatural">{item.name}</a>
+                              <Link href={{ pathname: "/product", query: {id: `${item.id}`},}}>{item.name}</Link>
                               <a>{mainName}</a>
                             </h5>
                             <span className="ec-price">
@@ -78,7 +80,7 @@ function ProdDestaques({products, mainCategories}) {
                           </div>
 
                           <div className='col-12 pt-3'>
-                            <span className="ec-offer-btn"><a className="btn btn-lg btn-primary w-100 itemBtn d-flex">Compre Já</a></span>
+                            <span className="ec-offer-btn"><Link href={{ pathname: "/product", query: {id: `${item.id}`},}} className="btn btn-lg btn-primary w-100 itemBtn d-flex">Compre Já</Link></span>
                           </div>
                         </div>
                       </div>

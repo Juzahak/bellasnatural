@@ -95,7 +95,7 @@ export default function Home() {
                                                             modules={[FreeMode, Navigation, Thumbs]}
                                                             className="mySwiper2"
                                                         >
-                                                            {JSON.parse(item.image)?.map(item2 => {
+                                                            {JSON.parse(item.image)?.map((item2, index) => {
                                                                 return (
                                                                     <SwiperSlide key={index}>
                                                                         <Image src={item2.url} alt="" width={300} height={300} />
