@@ -19943,10 +19943,7 @@ li.ec-brand-item {
   line-height: 22px;
   padding-top: 0px;
 }
-.ec-pro-variation .ec-pro-variation-inner.ec-pro-variation-size .ec-pro-variation-content li:hover {
-  background-color: #D2AB66;
-  color: #ffffff;
-}
+
 
 button.btn-close.qty_close {
   position: absolute;

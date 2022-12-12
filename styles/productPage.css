@@ -344,7 +344,7 @@
   width: 70px;
   height: 30px;
   cursor: pointer;
-  background-color: #f5f5f5;
+  background-color: #f5f5f500;
   color: #777777;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -358,7 +358,6 @@
   font-size: 12px;
   line-height: 22px;
   padding: 0;
-  border: 1px solid #eeeeee;
   float: left;
   margin-right: 10px;
   border-radius: 0;

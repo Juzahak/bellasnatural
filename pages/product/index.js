@@ -4,7 +4,7 @@ import useSwr, { mutate } from "swr";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ProdDestaques from '../../components/ProdDestaques';
-
+import { toast } from "react-toastify";
 import axios from "axios";
 
 import {
@@ -14,7 +14,7 @@ import {
     FaMailBulk,
 } from "react-icons/fa";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -43,6 +43,24 @@ export default function Home() {
     const router = useRouter();
     const { id } = router.query;
   
+    useEffect(() => {
+
+
+
+        products?.forEach((item, index) => {
+            if(item?.id === parseInt(id)){
+                JSON.parse(item.price)?.forEach((item2, index) => {
+                    if(index < 1){
+                        setValue(parseInt(item2?.price))
+                        sizes?.map(item3 => {
+                            if(item3?.id === parseInt(item2?.size)){
+                            setSizeName(item3?.name)}
+                        })
+                    }
+                })
+            }
+        })
+    }, [])
 
     const inputQtd = (e) => {
         let valorAtual = quantityInput;
@@ -90,11 +108,15 @@ export default function Home() {
                 localStorage.setItem('entry', JSON.stringify(entry));
                 product.push(entry);
                 localStorage.setItem("produtos", JSON.stringify(product));
-                return
+                return (
+                    router.push("/AllProducts?id=Todos+os+Produtos"),
+                    toast('Produto adicionado com sucesso!', {
+                        position: "top-right",
+                    }))
             }})}
 
 
-    console.log(value)
+    console.log(value, sizeName)
     return (
         <>
             <Header />
@@ -200,7 +222,7 @@ export default function Home() {
                                                                 <div className="ec-pro-variation-inner ec-pro-variation-size">
                                                                     <span>Tamanhos disponíveis</span>
                                                                     <div className="ec-pro-variation-content">
-                                                                        <ul>
+                                                                        <ul className="ec-cat-tab-nav nav d-flex flex-row">
                                                                         {sizes?.map((itemSize) => {
                                                                             return(<>
                                                                             {JSON.parse(item.price).map((item) => {
@@ -211,9 +233,12 @@ export default function Home() {
                                                                                         <li onClick={() => {
                                                                                             setValue(parseInt(item.price));
                                                                                             setSizeName(itemSize.name);
-
                                                                                         }}>
+                                                                                            <a data-bs-toggle="tab" className="cat-link selected"
+                                                                                            href="#tab-cat-1">
                                                                                             <span >{itemSize.name}</span>
+
+                                                                                            </a>
                                                                                         </li>
                                                                                     </>
                                                                                     )

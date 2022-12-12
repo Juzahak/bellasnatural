@@ -456,6 +456,7 @@
 }
 .ec-cat-tab-nav .cat-link:hover {
   background-color: #836243;
+  color: #ffffff;
 }
 .ec-cat-tab-nav .cat-link:hover .cat-icon-hover {
   display: block;
@@ -505,6 +506,7 @@
 }
 .ec-cat-tab-nav .cat-link.active {
   background-color: #836243;
+  color: white;
 }
 .ec-cat-tab-nav .cat-link.active .cat-icon-hover {
   display: block;
@@ -541,3 +543,7 @@
   background-color: #836243;
 }
 
+.selected{
+  height: 40px;
+  border-radius: 5px;
+}
