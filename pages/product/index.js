@@ -97,7 +97,7 @@ export default function Home() {
                                                         >
                                                             {JSON.parse(item.image)?.map(item2 => {
                                                                 return (
-                                                                    <SwiperSlide>
+                                                                    <SwiperSlide key={index}>
                                                                         <Image src={item2.url} alt="" width={300} height={300} />
                                                                     </SwiperSlide>)
                                                             })}
@@ -115,7 +115,7 @@ export default function Home() {
                                                         >
                                                             {JSON.parse(item.image)?.map((item2, index) => {
                                                                 return (
-                                                                    <SwiperSlide>
+                                                                    <SwiperSlide key={index}>
                                                                         <Image src={item2.url} alt="" width={300} height={300} />
                                                                     </SwiperSlide>)
                                                             })}

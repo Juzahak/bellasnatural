@@ -24,16 +24,6 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
-    ],
-    "/b2b/EditProduct": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/b2b/EditProduct.js"
-    ],
-    "/b2b/ProductsList": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/b2b/ProductsList.js"
     ]
   },
   "ampFirstPages": []
