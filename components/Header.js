@@ -51,7 +51,6 @@ function Header() {
     console.log(product)
 }
 
-  console.log(cartProd.length)
 
   /*--------------------- ecart Responsive Menu -----------------------------------*/
   // function ResponsiveMobileEcartMenu() {
