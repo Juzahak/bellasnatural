@@ -163,7 +163,7 @@ export default function EditProduct() {
     imagem.forEach(async item => {
       if(item.blobs !== undefined) {
        if (item.image) {
-        const name = Math.floor(Math.random() * (1000000000 + 10));
+        const name = item.path;
         const storageRef = ref(storage, `image/${name}`);
         const uploadTask = uploadBytesResumable(storageRef, item.image);
         uploadTask.on(
@@ -213,9 +213,8 @@ export default function EditProduct() {
 
         setTimeout(async () => {
         let filteredArr = imageArr.filter(a => a.url !== undefined);
-        let final = JSON.stringify(filteredArr);
-        if(filteredArr.length === contador) {
           contador = 0;
+          console.log(filteredArr)
         let data = await axios.put(`/api/products/` + id, {
           name: productName,
           category: productCategory,
@@ -223,7 +222,7 @@ export default function EditProduct() {
           fullDescription: fullProductDescription,
           shortDescription: shortProductDescription,
           price: arrSizes,
-          image: final,
+          image: JSON.stringify(filteredArr),
           largura: largura,
           altura: altura,
           comprimento: comprimento,
@@ -232,8 +231,7 @@ export default function EditProduct() {
           active: active,
         });
         if (data.data) router.push("/b2b/ProductsList");
-      }
-      }, 3000)
+      }, 5000)
     }else{
     contador++
     {if(contador === imagem.length) {
@@ -298,7 +296,7 @@ export default function EditProduct() {
         ...current,
         {
           image: imagesUploaded,
-          path: imagesUploaded.name,
+          path: Math.floor(Math.random() * (1000000000 + 10)),
           blobs: imagePreview,
         },
       ]);
@@ -306,7 +304,6 @@ export default function EditProduct() {
     }
   };
 
-  console.log(imagem, imagemDelete )
 
   return (
     <div style={{ backgroundColor: '#f3f3f3' }}>

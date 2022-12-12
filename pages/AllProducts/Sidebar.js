@@ -1,3 +1,5 @@
+
+
 export default function Sidebar({ setCategorySelected, categorySelected, setSubCategorySelected, category, initialid }) {
 
   return (
@@ -53,6 +55,8 @@ export default function Sidebar({ setCategorySelected, categorySelected, setSubC
           
         })}
       </ul>
+
     </div>
+    
   );
 }

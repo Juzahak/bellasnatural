@@ -94,7 +94,7 @@ export default function AddProduct() {
         ...current,
         {
           image: imageToUpload,
-          path: imageToUpload.name,
+          path: Math.floor(Math.random() * (1000000000 + 10)),
         },
       ]);
 
@@ -102,7 +102,7 @@ export default function AddProduct() {
         ...current,
         {
           image: imageToUpload,
-          imageName: imageToUpload.name,
+          imageName: Math.floor(Math.random() * (1000000000 + 10)),
           imageLink: imagePreview,
         },
       ]);
@@ -143,7 +143,7 @@ export default function AddProduct() {
     imageFile.forEach(async item => {
        if (item.image) {
         const name = item.path
-        const storageRef = ref(storage, `image/${Math.floor(Math.random() * (1000000000 + 10))}`)
+        const storageRef = ref(storage, `image/${name}`)
         const uploadTask = uploadBytesResumable(storageRef, item.image)
   
         uploadTask.on(
@@ -215,7 +215,7 @@ export default function AddProduct() {
         });
         if (data.data) router.push("/b2b/ProductsList");
       }
-      }, 3000)
+      }, 5000)
   })
 
       

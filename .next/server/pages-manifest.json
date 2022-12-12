@@ -2,7 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/b2b/EditProduct": "pages/b2b/EditProduct.js",
   "/api/category": "pages/api/category.js",
-  "/": "pages/index.js",
-  "/api/products": "pages/api/products.js"
+  "/api/product_sizes": "pages/api/product_sizes.js",
+  "/api/subcategory": "pages/api/subcategory.js",
+  "/api/products/[id]": "pages/api/products/[id].js",
+  "/api/colors": "pages/api/colors.js",
+  "/api/products": "pages/api/products.js",
+  "/b2b/ProductsList": "pages/b2b/ProductsList.js"
 }

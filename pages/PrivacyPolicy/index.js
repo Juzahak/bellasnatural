@@ -8,18 +8,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function PrivacyPolicy() {
   const { data: policy_privacity } = useSwr(`/api/policy`, fetcher);
-  const [policy, setPolicy] = useState('')
 
-  useEffect(() => {
-
-     policy_privacity?.map(item => {
-        setPolicy(item.text)
-      })
-    
-    
-  }, [policy_privacity])
-
-  console.log(policy)
 
   return (
     <>
@@ -38,7 +27,7 @@ export default function PrivacyPolicy() {
             </div>
             <div className="col-md-12">
               <div className="ec-common-wrapper" style={{ whiteSpace: 'pre-wrap' }}>
-                {policy}
+                { policy_privacity?.map(item => {return(item.text)})}
               </div>
             </div>
           </div>

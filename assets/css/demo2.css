@@ -19761,7 +19761,6 @@ li.ec-brand-item {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  position: absolute;
   padding: 30px 5%;
 }
 .ec-offer-inner > .row {

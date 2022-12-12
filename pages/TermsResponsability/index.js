@@ -9,15 +9,6 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 export default function TermsResponsability() {
   const { data: terms_responsibility } = useSwr(`/api/terms`, fetcher);
-  const [terms, setTerms] = useState("")
-
-  useEffect(() => {
-    terms_responsibility?.map(item => {
-      setTerms(item.text)
-    })
-  }, [])
-
-  console.log(terms)
   return (
     <>
       <Header />
@@ -35,7 +26,7 @@ export default function TermsResponsability() {
             </div>
             <div className="col-md-12">
               <div className="ec-common-wrapper" style={{ whiteSpace: 'pre-wrap' }}>
-                {terms}
+                {terms_responsibility?.map(item => {return(item.text)})}
               </div>
             </div>
           </div>

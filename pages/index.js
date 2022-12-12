@@ -153,12 +153,14 @@ export default function Home() {
             <div className='d-flex flex-column'>
               <div className='col-12 d-flex pb-4 mob-column' >
                 {products?.map((item, index) => {
+                  console.log(item)
                     if(index <= 4){
                     let valores = JSON.parse(item.price);
                     let mainName = '';
                     let imagem = '';
                     mainCategories?.map((item3, index) => { if (item3.id === item.category) { mainName = item3.name } })
                     JSON.parse(item.image)?.map((item4, index) => { if (index === 0) { imagem = item4.url } })
+                    if(index < 4){
                     return (
                       <div key={item.id} className="ec-product-content col-lg-3 col-12 mb-4">
                         <div className="ec-product-inner">
@@ -208,7 +210,7 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    )
+                    )}
                   }})
                 }
               </div>

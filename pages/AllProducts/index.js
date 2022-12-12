@@ -38,7 +38,6 @@ export default function AllProducts() {
               category={category}
               initialid={categorySelected}
             />
-
             <div className="col-9 row">
               <TopBar categorySelected={categorySelected} setSubCategorySelected={setSubCategorySelected} subCategory={subCategory} initialid={categorySelected}/>
 
